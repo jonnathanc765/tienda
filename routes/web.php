@@ -14,3 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('productos', 'ProductController@index')->name('product.index');
+Route::get('productos/crear','ProductController@create')->name('product.create');
+Route::post('productos/guardar', 'ProductController@store')->name('product.store');
