@@ -14,6 +14,7 @@
                         <th>ID</th>
                         <th>Nombre</th>
                         <th>Stock</th>
+                        <th>Acción</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -22,6 +23,14 @@
                         <td>{{ $product->id }}</td>
                         <td>{{ $product->name }}</td>
                         <td>{{ $product->quantity }}</td>
+                        <td>
+                            <form action="{{ route('product.destroy', $product) }}" method="POST">
+                                {{ csrf_field() }}
+                                {{ method_field('DELETE') }}
+                                <button href="#" class="btn waves-light waves-effect tooltipped" data-position="top" data-tooltip="Borrar"><i class="fas fa-trash-alt"></i></button>
+                                <a href="{{ route('product.edit', $product) }}" class="btn waves-effect waves-light tooltipped" data-position="top" data-tooltip="Editar"><i class="fas fa-pencil-alt"></i></a>
+                            </form>
+                        </td>
                     </tr> 
                     @endforeach
                 </tbody>

@@ -27,4 +27,24 @@ class ProductController extends Controller
         Product::create($data);
         return redirect()->route('product.index');
     }
+    function destroy(Product $product)
+    {
+        $product->delete();
+        return redirect()->route('product.index');
+    }
+    function edit(Product $product)
+    {
+        return view('product.edit', compact('product'));
+    }
+    function update(Product $product)
+    {
+        $data = request()->validate([
+            'name' => 'required|string',
+            'description' => 'required|string',
+            'quantity' => 'integer|min:1|max:5000'
+        ]);
+
+        $product->update($data);
+        return redirect()->route('product.index');
+    }
 }

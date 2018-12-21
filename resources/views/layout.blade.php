@@ -17,7 +17,7 @@
                 </a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons"><i class="fas fa-bars"></i></i></a>
                 <ul class="right hide-on-med-and-down">
-                    <li><a href="sass.html">Sass</a></li>
+                    <li><a href="{{ route('product.index') }}">Productos</a></li>
                     <li><a href="badges.html">Components</a></li>
                     <li><a href="collapsible.html">Javascript</a></li>
                     <li><a href="mobile.html">Mobile</a></li>
@@ -34,7 +34,7 @@
                             <i class="material-icons">
                                 <i class="fas fa-search"></i>
                             </i></label>
-                        <i class="material-icons">close</i>
+                        <i class="material-icons"><i class="fas fa-times"></i></i>
                     </div>
                     </form>
                 </div>
@@ -42,7 +42,7 @@
         </div>
 
         <ul class="sidenav" id="mobile-demo">
-            <li><a href="sass.html">Sass</a></li>
+            <li><a href="{{ route('product.index') }}">Productos</a></li>
             <li><a href="badges.html">Components</a></li>
             <li><a href="collapsible.html">Javascript</a></li>
             <li><a href="mobile.html">Mobile</a></li>
