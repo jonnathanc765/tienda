@@ -21,7 +21,8 @@ class ProductController extends Controller
         $data = $request->validate([
             'name' => 'required|string',
             'description' => 'required|string',
-            'quantity' => 'integer|min:1|max:5000'
+            'quantity' => 'integer|min:1|max:5000',
+            'value'=> 'min:0.1'
         ],[
             'quantity.integer' => 'La cantidad debe de ser un numero entero',
             'quantity.min' => 'La cantidad debe de ser de al menos 1',
@@ -45,7 +46,8 @@ class ProductController extends Controller
         $data = request()->validate([
             'name' => 'required|string',
             'description' => 'required|string',
-            'quantity' => 'integer|min:1|max:5000'
+            'quantity' => 'integer|min:1|max:5000',
+            'value' => 'min:0.1'
         ],[
             'quantity.integer' => 'La cantidad debe de ser un numero entero',
             'quantity.min' => 'La cantidad debe de ser de al menos 1',

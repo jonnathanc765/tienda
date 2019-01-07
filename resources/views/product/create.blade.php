@@ -28,6 +28,13 @@
                             <span class="helper-text" data-error="wrong" data-success="right"> {{ $errors->first('quantity') }}</span>
                         @endif
                     </div>
+                    <div class="input-field">
+                        <input type="text" id="value" name="value" class="validate" value="{{ old('value') }}">
+                        <label for="value">Precio</label>
+                        @if ($errors->has('value'))
+                            <span class="helper-text" data-error="wrong" data-success="right"> {{ $errors->first('value') }}</span>
+                        @endif
+                    </div>
                     <button type="submit" class="btn waves-effect waves-light">Guardar</button>
                 </form>
             </div>

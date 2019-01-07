@@ -18,7 +18,7 @@
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons"><i class="fas fa-bars"></i></i></a>
                 <ul class="right hide-on-med-and-down">
                     <li><a href="{{ route('product.index') }}">Productos</a></li>
-                    <li><a href="badges.html">Components</a></li>
+                    <li><a href="{{ route('invoice.index') }}">Factura</a></li>
                     <li><a href="collapsible.html">Javascript</a></li>
                     <li><a href="mobile.html">Mobile</a></li>
                 </ul>
