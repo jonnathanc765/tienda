@@ -27,5 +27,6 @@ class ProductSeeder extends Seeder
         	'description' => 'Queso por kilo',
         	'quantity' => '30',
         ]);
+        factory(Product::class)->times(17)->create();
     }
 }
