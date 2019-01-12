@@ -30,7 +30,8 @@ class ProductController extends Controller
     function destroy(Product $product)
     {
         $product->delete();
-        return redirect()->route('product.index');
+        $products = Product::all();
+        return $products;
     }
     function edit(Product $product)
     {

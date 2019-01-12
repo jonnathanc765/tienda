@@ -24,12 +24,11 @@
                         <td>{{ $product->name }}</td>
                         <td>{{ $product->quantity }}</td>
                         <td>
-                            <form action="{{ route('product.destroy', $product) }}" method="POST">
-                                {{ csrf_field() }}
-                                {{ method_field('DELETE') }}
-                                <button href="#" class="btn waves-light waves-effect tooltipped" data-position="top" data-tooltip="Borrar"><i class="fas fa-trash-alt"></i></button>
-                                <a href="{{ route('product.edit', $product) }}" class="btn waves-effect waves-light tooltipped" data-position="top" data-tooltip="Editar"><i class="fas fa-pencil-alt"></i></a>
-                            </form>
+                            {{ csrf_field() }}
+                            <input value="{{ route('product.destroy', $product) }}" class="route" type="hidden">
+                            {{ method_field('DELETE') }}
+                            <button href="#" class="btn waves-light waves-effect tooltipped delete" data-position="top" data-tooltip="Borrar"><i class="fas fa-trash-alt"></i></button>
+                            <a href="{{ route('product.edit', $product) }}" class="btn waves-effect waves-light tooltipped" data-position="top" data-tooltip="Editar"><i class="fas fa-pencil-alt"></i></a>
                         </td>
                     </tr> 
                     @endforeach
@@ -39,4 +38,30 @@
     </div>
 </div>
     
+@endsection
+
+@section('additional-scripts')
+    <script>
+        $(document).ready(function() {
+            $('button.delete').click(function() {
+                 $(this).parents('tr').slideUp(400);
+                 $(this).siblings('input.route').val();
+                 $.ajax({
+                    url : $(this).siblings('input.route').val(),
+                    type: "POST",
+                    data : {
+                        _token: $(this).siblings('input[name="_token"]').val(),
+                        _method: $(this).siblings('input[name="_method"]').val(),
+                    }
+                })
+                .done(function(data) {
+                    $("#respuesta").html(data);
+
+                })
+                .fail(function(data) {
+                    alert( "error" );
+                });
+            });
+        });
+    </script>
 @endsection
