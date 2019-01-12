@@ -8,12 +8,13 @@
 
             <a class="btn-floating btn-large waves-effect waves-light red" href="{{ route('product.create') }}"><i class="material-icons"><i class="fas fa-plus"></i></i></a> Agregar Nuevo Producto
             
-            <table class="striped">
+            <table class="highlight">
                 <thead>
                     <tr>
                         <th>ID</th>
                         <th>Nombre</th>
                         <th>Stock</th>
+                        <th>Precio</th>
                         <th>Acción</th>
                     </tr>
                 </thead>
@@ -23,6 +24,7 @@
                         <td>{{ $product->id }}</td>
                         <td>{{ $product->name }}</td>
                         <td>{{ $product->quantity }}</td>
+                        <td>{{ $product->price }}</td>
                         <td>
                             {{ csrf_field() }}
                             <input value="{{ route('product.destroy', $product) }}" class="route" type="hidden">
@@ -44,7 +46,7 @@
     <script>
         $(document).ready(function() {
             $('button.delete').click(function() {
-                 $(this).parents('tr').slideUp(400);
+                 $(this).parents('tr').fadeOut(400);
                  $(this).siblings('input.route').val();
                  $.ajax({
                     url : $(this).siblings('input.route').val(),
@@ -55,8 +57,7 @@
                     }
                 })
                 .done(function(data) {
-                    $("#respuesta").html(data);
-
+                    M.toast({html: 'Producto Borrado con exito'}) 
                 })
                 .fail(function(data) {
                     alert( "error" );

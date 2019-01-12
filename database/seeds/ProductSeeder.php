@@ -14,17 +14,20 @@ class ProductSeeder extends Seeder
     {
         Product::create([
         	'name' => 'Mayonesa',
-        	'description' => 'Mayonesa marca mavesa',
+            'description' => 'Mayonesa marca mavesa',
+            'price' => '6000',
         	'quantity' => '200',
         ]);
         Product::create([
         	'name' => 'Cafe',
-        	'description' => 'Café Sanareño',
+            'description' => 'Café Sanareño',
+            'price' => '15000',
         	'quantity' => '80',
         ]);
         Product::create([
         	'name' => 'Queso',
-        	'description' => 'Queso por kilo',
+            'description' => 'Queso por kilo',
+            'price' => '12000',
         	'quantity' => '30',
         ]);
         factory(Product::class)->times(17)->create();

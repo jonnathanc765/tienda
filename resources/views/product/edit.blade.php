@@ -23,6 +23,13 @@
                         @endif
                     </div>
                     <div class="input-field">
+                        <textarea name="preice" id="preice" class="materialize-textarea validate">{{ old('preice',$product->price) }}</textarea>
+                        <label for="preice">Precio</label>
+                        @if ($errors->has('preice'))
+                            <span class="helper-text" data-error="wrong" data-success="right"> {{ $errors->first('description') }}</span>
+                        @endif
+                    </div>
+                    <div class="input-field">
                         <input type="number" id="quantity" name="quantity" class="validate" value="{{ old('quantity',$product->quantity) }}">
                         <label for="quantity">Cantidad</label>
                         @if ($errors->has('quantity',$product->quantity))
