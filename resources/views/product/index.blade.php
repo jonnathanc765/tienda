@@ -56,10 +56,9 @@
     <script>
         $(document).ready(function() {
             $('a.delete').click(function() {
-                console.log($(this).parents('.modal.delete').siblings('input.route').val());
-                console.log($(this).parents('.modal.delete').siblings('input[name="_method"]').val());
+                var a = $(this);
                  $.ajax({
-                    url : $(this).siblings('input.route').val(),
+                    url : $(this).parents('.modal.delete').siblings('input.route').val(),
                     type: "POST",
                     data : {
                         _token: $(this).parents('.modal.delete').siblings('input[name="_token"]').val(),
@@ -68,7 +67,7 @@
                 })
                 .done(function(data) {
                     M.toast({html: 'Producto Borrado con exito'});
-                    $(this).parents('tr').fadeOut(400);
+                    $(a).parents('tr').fadeOut(400);
                 })
                 .fail(function(data) {
                     M.toast({html: 'No se ha podido borrar el producto'});

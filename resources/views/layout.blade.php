@@ -6,13 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    <link rel="icon shortcut" href="{{ asset('img/logo.jpg') }}">
     <title>Tienda</title>
 </head>
 <body>
 
         <nav>
             <div class="nav-wrapper cyan darken-2">
-                <a href="#!" class="brand-logo center">
+                <a href="#" class="brand-logo center">
                     <i class="fas fa-store"></i>
                     Tienda
                 </a>

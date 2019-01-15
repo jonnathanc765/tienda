@@ -16,10 +16,13 @@ Route::get('/', function () {
 });
 
 
-Route::get('productos', 'ProductController@index')->name('product.index');
-Route::get('productos/{product}', 'ProductController@show')->name('product.show');
-Route::get('productos/crear','ProductController@create')->name('product.create');
-Route::post('productos/guardar', 'ProductController@store')->name('product.store');
-Route::delete('productos/eliminar/{product}', 'ProductController@destroy')->name('product.destroy');
-Route::get('productos/editar/{product}', 'ProductController@edit')->name('product.edit');
-Route::put('productos/actualizar/{product}', 'ProductController@update')->name('product.update');
+Route::prefix('productos')->group(function ()
+{
+    Route::get('/', 'ProductController@index')->name('product.index');
+    Route::get('{product}/', 'ProductController@show')->name('product.show');
+    Route::get('nuevo/producto', 'ProductController@create')->name('product.create');
+    Route::post('guardar/', 'ProductController@store')->name('product.store');
+    Route::delete('eliminar/{product}', 'ProductController@destroy')->name('product.destroy');
+    Route::get('editar/{product}', 'ProductController@edit')->name('product.edit');
+    Route::put('actualizar/{product}', 'ProductController@update')->name('product.update');
+});
