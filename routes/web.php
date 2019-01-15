@@ -21,4 +21,4 @@ Route::get('productos/crear','ProductController@create')->name('product.create')
 Route::post('productos/guardar', 'ProductController@store')->name('product.store');
 Route::delete('productos/eliminar/{product}', 'ProductController@destroy')->name('product.destroy');
 Route::get('productos/editar/{product}', 'ProductController@edit')->name('product.edit');
-Route::put('productos/update/{product}', 'ProductController@update')->name('product.update');
+Route::put('productos/actualizar/{product}', 'ProductController@update')->name('product.update');

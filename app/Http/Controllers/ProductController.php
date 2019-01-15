@@ -25,8 +25,6 @@ class ProductController extends Controller
             'price' => 'numeric|required|min:1'
         ]);
 
-        // dd($data);
-
         Product::create($data);
         return redirect()->route('product.index');
     }
@@ -46,7 +44,7 @@ class ProductController extends Controller
             'name' => 'required|string',
             'description' => 'required|string',
             'quantity' => 'integer|min:1|max:5000',
-            'price' => 'numeric|required'
+            'price' => 'numeric|required|min:1'
         ]);
 
         $product->update($data);

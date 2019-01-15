@@ -23,10 +23,10 @@
                         @endif
                     </div>
                     <div class="input-field">
-                        <textarea name="preice" id="preice" class="materialize-textarea validate">{{ old('preice',$product->price) }}</textarea>
-                        <label for="preice">Precio</label>
-                        @if ($errors->has('preice'))
-                            <span class="helper-text" data-error="wrong" data-success="right"> {{ $errors->first('description') }}</span>
+                        <textarea name="price" id="price" class="materialize-textarea validate">{{ old('price',$product->price) }}</textarea>
+                        <label for="price">Precio</label>
+                        @if ($errors->has('price'))
+                            <span class="helper-text" data-error="wrong" data-success="right"> {{ $errors->first('price') }}</span>
                         @endif
                     </div>
                     <div class="input-field">

@@ -26,10 +26,19 @@
                         <td>{{ $product->quantity }}</td>
                         <td>{{ $product->price }}</td>
                         <td>
+                            <div id="deleteModal" class="modal">
+                                <div class="modal-content">
+                                    <h4>Confirmación</h4>
+                                    <p>¿Esta seguro que desea eliminar el producto {{ $product->name }} <br>Nota: Esta accion no se puede revertir</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <a href="#!" class="modal-close waves-effect waves-green btn-flat delete">Aceptar</a>
+                                </div>
+                            </div>
                             {{ csrf_field() }}
                             <input value="{{ route('product.destroy', $product) }}" class="route" type="hidden">
                             {{ method_field('DELETE') }}
-                            <button href="#" class="btn waves-light waves-effect tooltipped delete" data-position="top" data-tooltip="Borrar"><i class="fas fa-trash-alt"></i></button>
+                            <button data-target="deleteModal" class="btn waves-light waves-effect tooltipped" data-position="top" data-tooltip="Borrar"><i class="fas fa-trash-alt"></i></button>
                             <a href="{{ route('product.edit', $product) }}" class="btn waves-effect waves-light tooltipped" data-position="top" data-tooltip="Editar"><i class="fas fa-pencil-alt"></i></a>
                         </td>
                     </tr> 
@@ -45,7 +54,7 @@
 @section('additional-scripts')
     <script>
         $(document).ready(function() {
-            $('button.delete').click(function() {
+            $('a.delete').click(function() {
                  $(this).parents('tr').fadeOut(400);
                  $(this).siblings('input.route').val();
                  $.ajax({
