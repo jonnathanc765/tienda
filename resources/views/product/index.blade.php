@@ -8,7 +8,7 @@
 
             <a class="btn-floating btn-large waves-effect waves-light red" href="{{ route('product.create') }}"><i class="material-icons"><i class="fas fa-plus"></i></i></a> Agregar Nuevo Producto
             
-            <table class="highlight">
+            <table class="highlight centered">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -26,10 +26,10 @@
                         <td>{{ $product->quantity }}</td>
                         <td>{{ $product->price }}</td>
                         <td>
-                            <div id="deleteModal" class="modal">
+                            <div id="deleteModal{{ $product->id }}" class="modal delete">
                                 <div class="modal-content">
                                     <h4>Confirmación</h4>
-                                    <p>¿Esta seguro que desea eliminar el producto {{ $product->name }} <br>Nota: Esta accion no se puede revertir</p>
+                                    <p>¿Esta seguro que desea eliminar el producto <strong>{{ $product->name }}</strong> <br><span class="red-text text-darken-2">Nota: Esta accion no se puede revertir</span></p>
                                 </div>
                                 <div class="modal-footer">
                                     <a href="#!" class="modal-close waves-effect waves-green btn-flat delete">Aceptar</a>
@@ -38,8 +38,9 @@
                             {{ csrf_field() }}
                             <input value="{{ route('product.destroy', $product) }}" class="route" type="hidden">
                             {{ method_field('DELETE') }}
-                            <button data-target="deleteModal" class="btn waves-light waves-effect tooltipped" data-position="top" data-tooltip="Borrar"><i class="fas fa-trash-alt"></i></button>
+                            <button data-target="deleteModal{{ $product->id }}" class="btn waves-light waves-effect tooltipped modal-trigger" data-position="top" data-tooltip="Borrar"><i class="fas fa-trash-alt"></i></button>
                             <a href="{{ route('product.edit', $product) }}" class="btn waves-effect waves-light tooltipped" data-position="top" data-tooltip="Editar"><i class="fas fa-pencil-alt"></i></a>
+                            <a href="{{ route('product.show', $product) }}" class="btn waves-effect waves-light tooltipped" data-position="top" data-tooltip="Ver"><i class="far fa-eye"></i></a>
                         </td>
                     </tr> 
                     @endforeach
@@ -55,21 +56,22 @@
     <script>
         $(document).ready(function() {
             $('a.delete').click(function() {
-                 $(this).parents('tr').fadeOut(400);
-                 $(this).siblings('input.route').val();
+                console.log($(this).parents('.modal.delete').siblings('input.route').val());
+                console.log($(this).parents('.modal.delete').siblings('input[name="_method"]').val());
                  $.ajax({
                     url : $(this).siblings('input.route').val(),
                     type: "POST",
                     data : {
-                        _token: $(this).siblings('input[name="_token"]').val(),
-                        _method: $(this).siblings('input[name="_method"]').val(),
+                        _token: $(this).parents('.modal.delete').siblings('input[name="_token"]').val(),
+                        _method: $(this).parents('.modal.delete').siblings('input[name="_method"]').val(),
                     }
                 })
                 .done(function(data) {
-                    M.toast({html: 'Producto Borrado con exito'}) 
+                    M.toast({html: 'Producto Borrado con exito'});
+                    $(this).parents('tr').fadeOut(400);
                 })
                 .fail(function(data) {
-                    alert( "error" );
+                    M.toast({html: 'No se ha podido borrar el producto'});
                 });
             });
         });
