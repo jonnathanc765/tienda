@@ -3,13 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\CartDetails;
+use App\CartDetail;
 
 
 class Cart extends Model
 {
     function details()
     {
-        return $this->hasMany(CartDetails::class);
+        return $this->hasMany(CartDetail::class);
     }
 }
