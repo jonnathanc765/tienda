@@ -15,7 +15,8 @@ class CartSeeder extends Seeder
     public function run()
     {
         User::create([
-            'name' => 'Jonnathan Carrasco',
+            'first_name' => 'Jonnathan',
+            'last_name' => 'Carrasco',
             'email' => 'jonna@gmail.com',
             'password' => bcrypt(123),
             ]);

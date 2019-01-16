@@ -38,3 +38,7 @@ Route::prefix('detalles')->group(function ()
     Route::get('/', 'CartController@index')->name('cart.index');
     Route::delete('/{detail}', 'CartDetailController@destroy')->name('detail.destroy');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
