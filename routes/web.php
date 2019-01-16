@@ -11,11 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return 'Bienvenido';
-});
-
-
 Route::prefix('productos')->group(function ()
 {
     Route::get('/', 'ProductController@index')->name('product.index');
@@ -42,3 +37,4 @@ Route::prefix('detalles')->group(function ()
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');

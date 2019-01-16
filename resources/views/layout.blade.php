@@ -12,20 +12,39 @@
 <body>
 
         <nav>
+           
             <div class="nav-wrapper cyan darken-2">
-                <a href="#" class="brand-logo center">
+                <a href="{{ route('login') }}" class="brand-logo center">
                     <i class="fas fa-store"></i>
                     Tienda
                 </a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons"><i class="fas fa-bars"></i></i></a>
+                @if (Auth::check())
                 <ul class="right hide-on-med-and-down">
                     <li><a href="{{ route('product.index') }}"><i class="fas fa-cart-plus"></i> Productos</a></li>
                     <li><a href="{{ route('cart.index') }}"><i class="fas fa-file-invoice-dollar"></i> Factura</a></li>
                     <li><a href="collapsible.html">Javascript</a></li>
-                    <li><a href="mobile.html">Mobile</a></li>
+                    <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}<i class="material-icons right"><i class="fas fa-caret-down"></i></i></a></li>
                 </ul>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+                <ul id="dropdown1" class="dropdown-content">
+                    <li><a href="#!">one</a></li>
+                    <li><a href="#!">two</a></li>
+                    <li class="divider"></li>
+                    <li><a class="logout">Cerrar Sesión</a></li>
+                </ul>
+                <ul class="sidenav" id="mobile-demo">
+                        <li><a href="{{ route('product.index') }}"><i class="fas fa-cart-plus"></i> Productos</a></li>
+                        <li><a href="{{ route('cart.index') }}"><i class="fas fa-file-invoice-dollar"></i> Factura</a></li>
+                        <li><a href="collapsible.html">Javascript</a></li>
+                        <li><a href="mobile.html">Mobile</a></li>
+                </ul>
+                @endif
             </div>
         </nav>
+        @if (Auth::check())
         <div class="container">
             <nav>
                 <div class="nav-wrapper cyan darken-1">
@@ -42,13 +61,8 @@
                 </div>
             </nav
         </div>
+        @endif
 
-        <ul class="sidenav" id="mobile-demo">
-            <li><a href="{{ route('product.index') }}"><i class="fas fa-cart-plus"></i> Productos</a></li>
-            <li><a href="{{ route('cart.index') }}"><i class="fas fa-file-invoice-dollar"></i> Factura</a></li>
-            <li><a href="collapsible.html">Javascript</a></li>
-            <li><a href="mobile.html">Mobile</a></li>
-        </ul>
 
     
     @yield('content')
@@ -60,6 +74,9 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script>
         M.AutoInit();
+        $('.logout').click(function() {
+            $('#logout-form').submit();
+        });
     </script>
     @yield('additional-scripts')
 </body>
