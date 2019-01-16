@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Product;
+use App\CartDetail;
 
 class CartDetailController extends Controller
 {
-    function product()
+    function destroy(CartDetail $detail)
     {
-        $this->belongsTo(Product::class);
+        $detail->delete();
+        return redirect()->route('cart.index');
     }
 }

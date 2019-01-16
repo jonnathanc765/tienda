@@ -27,7 +27,20 @@
                           <td>{{ $detail->product->price }} Bs.S</td>
                           <td>{{ $detail->price }} Bs.S</td>
                           <td>
-                              <a href="#" class="btn waves-effect waves-light tooltipped" data-position="top" data-tooltip="Eliminar"><i class="fas fa-times"></i></a>
+                            <div id="deleteModal-{{ $detail->id }}" class="modal delete">
+                                <div class="modal-content">
+                                    <h4>Confirmación</h4>
+                                    <p>¿Esta seguro que desea eliminar el producto <strong>{{ $detail->product->name }}?</strong> <br><span class="red-text text-darken-2">Nota: Esta accion no se puede revertir</span></p>
+                                </div>
+                                <div class="modal-footer">
+                                    <form action="{{ route('detail.destroy', $detail) }}" method="POST">
+                                        {{ method_field('DELETE') }}
+                                        {{ csrf_field() }}
+                                        <button type="submit" class="modal-close waves-effect waves-green btn-flat">Aceptar</button>
+                                    </form>
+                                </div>
+                            </div>
+                            <a data-target="deleteModal-{{ $detail->id }}" class="btn waves-effect waves-light tooltipped modal-trigger" data-position="top" data-tooltip="Eliminar"><i class="fas fa-times"></i></a>
                           </td>
                         </tr>       
                         @endforeach

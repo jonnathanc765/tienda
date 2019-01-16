@@ -29,7 +29,7 @@
                             <div id="deleteModal{{ $product->id }}" class="modal delete">
                                 <div class="modal-content">
                                     <h4>Confirmación</h4>
-                                    <p>¿Esta seguro que desea eliminar el producto <strong>{{ $product->name }}</strong> <br><span class="red-text text-darken-2">Nota: Esta accion no se puede revertir</span></p>
+                                    <p>¿Esta seguro que desea eliminar el producto <strong>{{ $product->name }}</strong>? <br><span class="red-text text-darken-2">Nota: Esta accion no se puede revertir</span></p>
                                 </div>
                                 <div class="modal-footer">
                                     <a href="#!" class="modal-close waves-effect waves-green btn-flat delete">Aceptar</a>
