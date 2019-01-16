@@ -26,3 +26,8 @@ Route::prefix('productos')->group(function ()
     Route::get('editar/{product}', 'ProductController@edit')->name('product.edit');
     Route::put('actualizar/{product}', 'ProductController@update')->name('product.update');
 });
+
+Route::prefix('carrito')->group(function ()
+{
+    Route::get('/', 'CartController@index')->name('cart.index');
+});

@@ -13,6 +13,7 @@ class DatabaseSeeder extends Seeder
     {
         // $this->call(UsersTableSeeder::class);
         $this->call(ProductSeeder::class);
+        $this->call(CartSeeder::class);
 
 
         function truncateTables(array $tables)
