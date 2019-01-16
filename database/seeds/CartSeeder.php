@@ -28,11 +28,13 @@ class CartSeeder extends Seeder
             'cart_id' => '1',
             'product_id' => '1',
             'quantity' => '3',
+            'price' => '1000'
         ]);
         CartDetail::create([
             'cart_id' => '1',
             'product_id' => '2',
             'quantity' => '20',
+            'price' => '2000'
         ]);
     }
 }
