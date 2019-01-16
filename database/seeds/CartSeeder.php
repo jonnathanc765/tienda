@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Cart;
 use App\User;
+use App\Cart;
 use App\CartDetail;
 
 class CartSeeder extends Seeder
@@ -36,5 +36,6 @@ class CartSeeder extends Seeder
             'quantity' => '20',
             'price' => '2000'
         ]);
+
     }
 }
