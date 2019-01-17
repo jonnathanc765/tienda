@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\CartDetail;
+use App\Product;
 
 class CartDetailController extends Controller
 {
@@ -15,5 +16,22 @@ class CartDetailController extends Controller
     {
         $detail->delete();
         return redirect()->route('cart.index');
+    }
+    function store(Request $request)
+    {
+        $data = $request->validate([
+            'quantity' => 'min:1|integer',
+            'product_id' => ''
+        ]);
+
+        
+        $product = Product::find($data['product_id']);
+        if ($product->quantity < $data['quantity']) {
+            return redirect()->route('cart.index')->withErrors(['insufficient' => ['Stock Insuficiente']]);
+        }
+
+
+        return redirect()->route('product.index');
+
     }
 }

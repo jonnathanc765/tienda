@@ -25,13 +25,14 @@ Route::prefix('productos')->group(function ()
 Route::prefix('carrito')->group(function ()
 {
     Route::get('/', 'CartController@index')->name('cart.index');
-    Route::delete('/detalle/{detail}', 'CartDetailController@');
+    
 });
 
 Route::prefix('detalles')->group(function ()
 {
     Route::get('/', 'CartController@index')->name('cart.index');
     Route::delete('/{detail}', 'CartDetailController@destroy')->name('detail.destroy');
+    Route::post('/guardar', 'CartDetailController@store')->name('detail.store');
 });
 
 Auth::routes();

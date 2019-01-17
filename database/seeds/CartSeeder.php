@@ -15,10 +15,10 @@ class CartSeeder extends Seeder
     public function run()
     {
         User::create([
-            'first_name' => 'Jonnathan',
+            'first_name' => 'Yennifer',
             'last_name' => 'Carrasco',
-            'email' => 'jonna@gmail.com',
-            'password' => bcrypt(123),
+            'email' => 'yennifer@gmail.com',
+            'password' => bcrypt(123456),
             ]);
         Cart::create([
             'user_id' => '1',
@@ -36,6 +36,12 @@ class CartSeeder extends Seeder
             'product_id' => '2',
             'quantity' => '20',
             'price' => '2000'
+        ]);
+        CartDetail::create([
+            'cart_id' => '1',
+            'product_id' => '3',
+            'quantity' => '8',
+            'price' => '25000'
         ]);
 
     }

@@ -44,30 +44,46 @@
                           </td>
                         </tr>       
                         @endforeach
-                        <tr>
-                            <td><input type="number" style="width: 45px;" value="1"></td>
-                            <td colspan="2">
-                                <select name="" id="">
-                                    @foreach ($products as $product)
-                                    <option value="">{{ $product->name }}</option>    
-                                    @endforeach
-                                </select>
-                            </td>
-                            <td>25 Bs.S</td>
-                            <td>
-                                <a href="" class="btn waves-effect waves-light tooltipped" data-position="top" data-tooltip="Agregar Producto"><i class="fas fa-check"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>23</td>
-                            <td colspan="3">Total: 2500 Bs.S</td>
-                            <td><a href="#" class="btn waves-effect waves-light tooltipped" data-position="top" data-tooltip="Procesar"><i class="fas fa-file-invoice-dollar"></i></a></td>
-                        </tr>
+                        <form action="{{ route('detail.store') }}" method="POST" id="carform">
+                            {{ csrf_field() }}
+                            <tr>
+                                <td><input type="number" style="width: 45px;" value="1" name="quantity"></td>
+                                <td colspan="2">
+                                    <select name="product_id" form="carform">
+                                        @foreach ($products as $product)
+                                        <option value="{{ $product->id }}">{{ $product->name }}</option>    
+                                        @endforeach
+                                    </select>
+                                </td>
+                                <td>25 Bs.S</td>
+                                <td>
+                                    <button type="submit"class="btn waves-effect waves-light tooltipped" data-position="top" data-tooltip="Agregar Producto"><i class="fas fa-check"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>23</td>
+                                <td colspan="3">Total: 2500 Bs.S</td>
+                                <td><a href="#" class="btn waves-effect waves-light tooltipped" data-position="top" data-tooltip="Procesar"><i class="fas fa-file-invoice-dollar"></i></a></td>
+                            </tr>
+                        </form>
                     </tbody>
                   </table>
             </div>
         </div>
     </div>
 
+    
 
+
+@endsection
+
+@section('additional-scripts')
+    @if ($errors->first('quantity'))
+        <p class="error">
+            {{ $errors->first('insufficient') }}
+        </p>
+        <script>
+            M.toast({'html': $('p.error').text()});
+        </script>
+    @endif
 @endsection
