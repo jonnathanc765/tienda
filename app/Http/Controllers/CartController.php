@@ -18,4 +18,8 @@ class CartController extends Controller
         $products = Product::all();
         return view('cart.index', compact('cart','products', 'total'));
     }
+    function ()
+    {
+        
+    }
 }
