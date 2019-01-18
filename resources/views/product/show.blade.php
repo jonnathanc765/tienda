@@ -1,4 +1,7 @@
 @extends('layout')
+@section('product-nav')
+active
+@endsection
 
 @section('content')
 
