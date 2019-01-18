@@ -12,4 +12,8 @@ class Cart extends Model
     {
         return $this->hasMany(CartDetail::class);
     }
+    function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

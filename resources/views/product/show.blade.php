@@ -15,6 +15,7 @@
                     <h2 class="header">{{ $product->name }}</h2>
                     <p><strong>{{ $product->description }}</strong></p>
                     <p>Stock: {{ $product->quantity }}</p>
+                    <p>Precio: {{ $product->price }} Bs.S</p>
                 </div>
                 <div class="card-action">
                     <a href="{{ route('product.edit',$product) }}">Editar</a>

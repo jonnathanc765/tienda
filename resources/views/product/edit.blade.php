@@ -22,19 +22,19 @@
                             <span class="helper-text" data-error="wrong" data-success="right"> {{ $errors->first('description') }}</span>
                         @endif
                     </div>
-                    <div class="input-field">
+                    <div class="input-field col m6">
                         <textarea name="price" id="price" class="materialize-textarea validate">{{ old('price',$product->price) }}</textarea>
                         <label for="price">Precio</label>
                         @if ($errors->has('price'))
                             <span class="helper-text" data-error="wrong" data-success="right"> {{ $errors->first('price') }}</span>
                         @endif
                     </div>
-                    <div class="input-field">
+                    <div class="input-field col m6">
                         <input type="number" id="quantity" name="quantity" class="validate" value="{{ old('quantity',$product->quantity) }}">
                         <label for="quantity">Cantidad</label>
-                        @if ($errors->has('quantity',$product->quantity))
-                            <span class="helper-text" data-error="wrong" data-success="right"> {{ $errors->first('quantity') }}</span>
-                        @endif
+                        @if ($errors->has('quantity'))
+                        <span class="helper-text" data-error="wrong" data-success="right"> {{ $errors->first('quantity') }}</span>
+                    @endif
                     </div>
                     <button type="submit" class="btn waves-effect waves-light">Guardar</button>
                 </form>

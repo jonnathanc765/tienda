@@ -49,20 +49,23 @@
                             <tr>
                                 <td><input type="number" style="width: 45px;" value="1" name="quantity"></td>
                                 <td colspan="2">
-                                    <select name="product_id" form="carform">
-                                        @foreach ($products as $product)
-                                        <option value="{{ $product->id }}">{{ $product->name }}</option>    
-                                        @endforeach
-                                    </select>
+                                    <div class="input-field">
+                                        <select name="product_id" form="carform" class="" style="max-width:270px;">
+                                            @foreach ($products as $product)
+                                            <option value="{{ $product->id }}" id="{{ $product->price }}">{{ $product->name }} ====== Stock: {{ $product->quantity }}</option>    
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    
                                 </td>
-                                <td>25 Bs.S</td>
+                                <td><span id="total"></span> Bs.S</td>
                                 <td>
                                     <button type="submit"class="btn waves-effect waves-light tooltipped" data-position="top" data-tooltip="Agregar Producto"><i class="fas fa-check"></i></button>
                                 </td>
                             </tr>
                             <tr>
                                 <td>23</td>
-                                <td colspan="3">Total: 2500 Bs.S</td>
+                                <td colspan="3">Total: {{ $total }} Bs.S</td>
                                 <td><a href="#" class="btn waves-effect waves-light tooltipped" data-position="top" data-tooltip="Procesar"><i class="fas fa-file-invoice-dollar"></i></a></td>
                             </tr>
                         </form>
@@ -78,12 +81,25 @@
 @endsection
 
 @section('additional-scripts')
-    @if ($errors->first('quantity'))
-        <p class="error">
-            {{ $errors->first('insufficient') }}
-        </p>
-        <script>
-            M.toast({'html': $('p.error').text()});
-        </script>
-    @endif
+    <script>
+        $(document).ready(function() {
+            var x = $('select option');
+            $('#total').text($('input[type=number]').val()*$(x[0]).attr('id'));
+            $('input[type=number]').change(function() {
+                var pos = parseInt($('select').val())-1;
+                
+                var price = $(x[pos]).attr('id');
+                
+                $('#total').text($(this).val()*price);
+            }); 
+            $('select').change(function() {
+                var pos = parseInt($('select').val())-1;
+                console.log('pos: ' + pos);
+                var price = $(x[pos]).attr('id');
+                console.log('price: ' + price);
+                $('#total').text($('input[type=number]').val()*price);
+            });            
+        });
+    </script>
 @endsection
+
