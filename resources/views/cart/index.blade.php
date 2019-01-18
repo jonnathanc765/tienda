@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col m12">
                 <h2>Carrito Actual</h2>
-
+                <a class="btn-floating btn-large waves-effect waves-light red tooltipped" data-tooltip="Vaciar el carrito actual" data-position="top"><i class="material-icons"><i class="far fa-trash-alt"></i></i></a> Vaciar Carrito
                 <table class="highlight centered">
                     <thead>
                       <tr>
@@ -81,7 +81,17 @@
 @endsection
 
 @section('additional-scripts')
-    <script>
+<script>
+
+        @if ($errors->first('insufficient'))
+            var error = "{{ $errors->first('insufficient') }}";
+            M.toast({html: error});
+        @endif
+        @if ($errors->first('quantity'))
+            var error = "{{ $errors->first('quantity') }}";
+            M.toast({html: error});
+        @endif
+
         $(document).ready(function() {
             var x = $('select option');
             $('#total').text($('input[type=number]').val()*$(x[0]).attr('id'));
@@ -100,6 +110,7 @@
                 $('#total').text($('input[type=number]').val()*price);
             });            
         });
+
     </script>
 @endsection
 

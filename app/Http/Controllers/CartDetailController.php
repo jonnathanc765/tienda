@@ -31,7 +31,7 @@ class CartDetailController extends Controller
         
         $product = Product::find($data['product_id']);
         if ($product->quantity < $data['quantity']) {
-            return redirect()->route('cart.index')->withErrors(['insufficient' => ['Stock Insuficiente']]);
+            return redirect()->route('cart.index')->withErrors(['insufficient'=>'Ya no hay Stock disponible']);
         }
 
         $product->quantity -= $data['quantity'];
