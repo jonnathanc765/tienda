@@ -8,7 +8,7 @@ active
 
     <div class="container">
         <div class="row">
-            <div class="col m12">
+            <div class="col m12 s12">
                 <h2>Carrito Actual</h2>
                 @if ($errors->any()) 
                 <ul>
@@ -28,7 +28,7 @@ active
                         <a href="{{ route('detail.empty') }}" class="modal-close waves-effect waves-green btn-flat">Aceptar</a>
                     </div>
                 </div>
-                <table class="highlight centered">
+                <table class="highlight centered responsive-table">
                     <thead>
                       <tr>
                           <th>Cantidad</th>
@@ -85,7 +85,7 @@ active
                             </tr>
                         </form>
                             <tr>
-                                <td>23</td>
+                                <td></td>
                                 <td colspan="3">Total: {{ $total }} Bs.S</td>
                                 <td><a href="#check" class="btn waves-effect waves-light tooltipped green modal-trigger" data-position="top" data-tooltip="Procesar"><i class="fas fa-file-invoice-dollar"></i></a></td>
                                 <div id="check" class="modal">

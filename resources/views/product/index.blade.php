@@ -8,7 +8,7 @@ active
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col m12">
+        <div class="col m12 s12">
             <h2>Productos Registrados</h2>
             @if ($errors->any())
             <ul>
@@ -21,7 +21,7 @@ active
 
             <a class="btn-floating btn-large waves-effect waves-light red" href="{{ route('product.create') }}"><i class="material-icons"><i class="fas fa-plus"></i></i></a> Agregar Nuevo Producto
             
-            <table class="highlight centered">
+            <table class="highlight centered responsive-table">
                 <thead>
                     <tr>
                         <th>ID</th>
