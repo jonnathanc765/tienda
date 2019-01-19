@@ -30,17 +30,17 @@
                     @csrf
                 </form>
                 <ul id="nav-dropdown" class="dropdown-content">
-                    <li><a href="#!">one</a></li>
-                    <li><a href="#!">two</a></li>
+                    <li><a href="#!">Comming Soon</a></li>
+                    <li><a href="#!">Comming Soon</a></li>
                     <li class="divider"></li>
                     <li><a class="logout">Cerrar Sesión</a></li>
                 </ul>
-                <ul class="sidenav" id="mobile-demo">
+                {{-- <ul class="sidenav" id="mobile-demo">
                         <li><a href="{{ route('product.index') }}"><i class="fas fa-cart-plus"></i> Productos</a></li>
                         <li><a href="{{ route('cart.index') }}"><i class="fas fa-file-invoice-dollar"></i> Factura</a></li>
                         <li><a href="collapsible.html">Javascript</a></li>
                         <li><a class="dropdown-trigger" href="#!" data-target="nav-dropdown"><i class="fas fa-user"></i> {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}<i class="material-icons right"><i class="fas fa-caret-down"></i></i></a></li>
-                </ul>
+                </ul> --}}
                 @endif
             </div>
         </nav>

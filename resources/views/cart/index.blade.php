@@ -83,25 +83,26 @@ active
                                     <button type="submit"class="btn waves-effect waves-light tooltipped blue" data-position="top" data-tooltip="Agregar Producto"><i class="fas fa-check"></i></button>
                                 </td>
                             </tr>
+                        </form>
                             <tr>
                                 <td>23</td>
                                 <td colspan="3">Total: {{ $total }} Bs.S</td>
                                 <td><a href="#check" class="btn waves-effect waves-light tooltipped green modal-trigger" data-position="top" data-tooltip="Procesar"><i class="fas fa-file-invoice-dollar"></i></a></td>
                                 <div id="check" class="modal">
-                                    <div class="modal-content">
-                                        <h4>Confirmación</h4>
-                                        <p>¿Esta seguro que desea procesar esta compra? <br>Nota: revise bien todos los productos</p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <form action="{{ route('cart.check') }}" method="POST">
+                                    <form action="{{ route('cart.check') }}" method="POST">
+                                        <div class="modal-content">
+                                            <h4>Confirmación</h4>
+                                            <p>¿Esta seguro que desea procesar esta compra? <br>Nota: revise bien todos los productos</p>
+                                        </div>
+                                        <div class="modal-footer">
                                             {{ csrf_field() }}
                                             <button type="submit" class="modal-close btn waves-effect waves-light">Aceptar</button>
-                                        </form>
-                                        <a class="modal-close btn waves-effect waves-light red">Cancelar</a>
-                                    </div>
+                                            <a class="modal-close btn waves-effect waves-light red">Cancelar</a>
+                                        </div>
+                                    </form>
                                 </div>
                             </tr>
-                        </form>
+                        
                     </tbody>
                   </table>
             </div>

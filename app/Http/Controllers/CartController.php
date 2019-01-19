@@ -31,18 +31,22 @@ class CartController extends Controller
     function check()
     {
         $user = Auth::user();
+        $total = 0;
         
         foreach ($user->carts as $carts) {
-            if ($cart->status == 'active') {
-                $cart = $carts;
+            if ($carts->status == 'active') {
+                
+                foreach ($carts->details as $detail) {
+                    $total += $detail->price;
+                }
+                
+
+                $carts->status = 'check';
+                $carts->save();
+
+                return view('cart.check', compact('carts','total'));
             }
         }
-
-        if ($cart->details == null) {
-            return null;
-        }
-        
-
         
     }
 }

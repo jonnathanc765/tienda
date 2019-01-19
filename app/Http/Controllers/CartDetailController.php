@@ -25,8 +25,10 @@ class CartDetailController extends Controller
     function store(Request $request)
     {
         $data = $request->validate([
-            'quantity' => 'min:1|integer',
-            'product_id' => 'exists:products,id'
+            'quantity' => 'min:1|integer|required',
+            'product_id' => 'exists:products,id|required'
+        ],[
+            'product_id.required' => 'No hay productos'
         ]);
 
         if ($this->cart() == null) {

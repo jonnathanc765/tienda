@@ -40,11 +40,12 @@
                     </p>
                     <br>
                     <p class="center-align">
-                        <button type="submit" class="btn waves-effect waves-light">
+                        <button type="submit" class="btn waves-effect waves-light blue">
                             {{ __('Entrar') }}
                         </button>
+                        <a href="{{ route('register') }}" class="btn waves-effect waves-light blue">Registrarse</a>
                         @if (Route::has('password.request'))
-                            <a class="btn waves-effect waves-light" href="{{ route('password.request') }}">
+                            <a class="btn waves-effect waves-light red" href="{{ route('password.request') }}">
                                 {{ __('¿Has olvidado tu contraseña?') }}
                             </a>
                         @endif
