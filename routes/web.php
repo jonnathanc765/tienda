@@ -25,7 +25,9 @@ Route::prefix('productos')->group(function ()
 Route::prefix('carrito')->group(function ()
 {
     Route::get('/', 'CartController@index')->name('cart.index');
-    Route::get('/vaciar', 'CartController@empty')->name('cart.empty'); 
+    Route::get('/vaciar', 'CartController@empty')->name('cart.empty');
+    Route::post('/facturar', 'CartController@check')->name('cart.check');
+    Route::get('/facturar/final', 'CartController@check')->name('cart.check-in');
 });
 
 Route::prefix('detalles')->group(function ()

@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\CartDetail;
 use App\Product;
+use App\Cart;
 
 class CartDetailController extends Controller
 {
@@ -28,6 +29,15 @@ class CartDetailController extends Controller
             'product_id' => 'exists:products,id'
         ]);
 
+        if ($this->cart() == null) {
+            $cart = new Cart;
+            $cart->user_id = Auth::user()->id;
+            $cart->status = 'active';
+            $cart->save();
+        } else {
+            $cart = $this->cart();
+        }
+
         
         $product = Product::find($data['product_id']);
         if ($product->quantity < $data['quantity']) {
@@ -36,8 +46,8 @@ class CartDetailController extends Controller
 
         $product->quantity -= $data['quantity'];
         $product->save();
-
-        $detail = CartDetail::where('product_id', $data['product_id'])->first();
+       
+        $detail = CartDetail::where('product_id', $data['product_id'])->where('cart_id',$cart->id)->first();
         
         if ($detail != null) {
             $detail->quantity += $data['quantity'];
@@ -49,7 +59,7 @@ class CartDetailController extends Controller
         $detail = new CartDetail;
         $detail->quantity = $data['quantity'];
         $detail->product_id = $data['product_id'];
-        $detail->cart_id = $this->cart()->id;
+        $detail->cart_id = $cart->id;
         $detail->price = $data['quantity']*$product->price;
         $detail->save();
         
@@ -58,12 +68,12 @@ class CartDetailController extends Controller
     }
     function cart() {
         $user = Auth::user();
+        
         foreach ($user->carts as $cart) {
             if ($cart->status == 'active') {
                 return $cart;
             }
         }
-        return null;
     }
     function empty()
     {

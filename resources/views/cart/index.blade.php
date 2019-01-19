@@ -10,6 +10,14 @@ active
         <div class="row">
             <div class="col m12">
                 <h2>Carrito Actual</h2>
+                @if ($errors->any()) 
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+                    
+                @endif
                 <a  class="btn-floating btn-large waves-effect waves-light red tooltipped modal-trigger" href="#modal1" data-tooltip="Vaciar el carrito actual" data-position="top"><i class="material-icons"><i class="far fa-trash-alt"></i></i></a> Vaciar Carrito
                 <div id="modal1" class="modal">
                     <div class="modal-content">
@@ -78,7 +86,20 @@ active
                             <tr>
                                 <td>23</td>
                                 <td colspan="3">Total: {{ $total }} Bs.S</td>
-                                <td><a href="#" class="btn waves-effect waves-light tooltipped" data-position="top" data-tooltip="Procesar"><i class="fas fa-file-invoice-dollar"></i></a></td>
+                                <td><a href="#check" class="btn waves-effect waves-light tooltipped green modal-trigger" data-position="top" data-tooltip="Procesar"><i class="fas fa-file-invoice-dollar"></i></a></td>
+                                <div id="check" class="modal">
+                                    <div class="modal-content">
+                                        <h4>Confirmación</h4>
+                                        <p>¿Esta seguro que desea procesar esta compra? <br>Nota: revise bien todos los productos</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <form action="{{ route('cart.check') }}" method="POST">
+                                            {{ csrf_field() }}
+                                            <button type="submit" class="modal-close btn waves-effect waves-light">Aceptar</button>
+                                        </form>
+                                        <a class="modal-close btn waves-effect waves-light red">Cancelar</a>
+                                    </div>
+                                </div>
                             </tr>
                         </form>
                     </tbody>

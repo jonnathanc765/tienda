@@ -22,7 +22,6 @@ class CartSeeder extends Seeder
             ]);
         Cart::create([
             'user_id' => '1',
-            'order_date' => '2012-12-12',
             'status' => 'active',
         ]);
         CartDetail::create([

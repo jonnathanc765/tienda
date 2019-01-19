@@ -17,7 +17,7 @@ class CreateCartsTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->nullable();
-            $table->date('order_date');
+            $table->timestamp('order_date')->useCurrent();
             $table->string('status');
 
             $table->timestamps();
