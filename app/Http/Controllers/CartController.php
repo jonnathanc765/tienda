@@ -8,6 +8,10 @@ use App\Product;
 
 class CartController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     function index()
     {   
         $cart = Cart::where('status', '=', 'active')->first();

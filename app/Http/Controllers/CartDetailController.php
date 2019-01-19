@@ -53,7 +53,7 @@ class CartDetailController extends Controller
         $detail->price = $data['quantity']*$product->price;
         $detail->save();
         
-        return redirect()->route('cart.index');
+        return redirect()->back();
 
     }
     function cart() {
@@ -65,5 +65,14 @@ class CartDetailController extends Controller
         }
         return null;
     }
-    
+    function empty()
+    {
+        foreach ($this->cart()->details as $detail) {
+            $product = Product::find($detail->product_id);
+            $product->quantity += $detail->quantity;
+            $product->save();
+            $detail->delete();
+        }
+        return redirect()->route('cart.index');
+    }    
 }

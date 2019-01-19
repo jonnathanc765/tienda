@@ -10,7 +10,16 @@ active
         <div class="row">
             <div class="col m12">
                 <h2>Carrito Actual</h2>
-                <a class="btn-floating btn-large waves-effect waves-light red tooltipped" data-tooltip="Vaciar el carrito actual" data-position="top"><i class="material-icons"><i class="far fa-trash-alt"></i></i></a> Vaciar Carrito
+                <a  class="btn-floating btn-large waves-effect waves-light red tooltipped modal-trigger" href="#modal1" data-tooltip="Vaciar el carrito actual" data-position="top"><i class="material-icons"><i class="far fa-trash-alt"></i></i></a> Vaciar Carrito
+                <div id="modal1" class="modal">
+                    <div class="modal-content">
+                        <h4>Confirmación</h4>
+                        <p>¿Esta seguro que desea vaciar todo el carrito? <br>Nota: Esta operacion no se puede deshacer</p>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="{{ route('detail.empty') }}" class="modal-close waves-effect waves-green btn-flat">Aceptar</a>
+                    </div>
+                </div>
                 <table class="highlight centered">
                     <thead>
                       <tr>
@@ -43,7 +52,7 @@ active
                                     </form>
                                 </div>
                             </div>
-                            <a data-target="deleteModal-{{ $detail->id }}" class="btn waves-effect waves-light tooltipped modal-trigger" data-position="top" data-tooltip="Eliminar"><i class="fas fa-times"></i></a>
+                            <a data-target="deleteModal-{{ $detail->id }}" class="btn waves-effect waves-light tooltipped modal-trigger red" data-position="top" data-tooltip="Eliminar"><i class="fas fa-times"></i></a>
                           </td>
                         </tr>       
                         @endforeach
@@ -63,7 +72,7 @@ active
                                 </td>
                                 <td><span id="total"></span> Bs.S</td>
                                 <td>
-                                    <button type="submit"class="btn waves-effect waves-light tooltipped" data-position="top" data-tooltip="Agregar Producto"><i class="fas fa-check"></i></button>
+                                    <button type="submit"class="btn waves-effect waves-light tooltipped blue" data-position="top" data-tooltip="Agregar Producto"><i class="fas fa-check"></i></button>
                                 </td>
                             </tr>
                             <tr>

@@ -13,7 +13,7 @@
 
         <nav>
            
-            <div class="nav-wrapper cyan darken-2">
+            <div class="nav-wrapper blue darken-4">
                 <a href="{{ route('login') }}" class="brand-logo center">
                     <i class="fas fa-store"></i>
                     Tienda
@@ -47,7 +47,7 @@
         @if (Auth::check())
         <div class="container">
             <nav>
-                <div class="nav-wrapper cyan darken-1">
+                <div class="nav-wrapper blue darken-3">
                     <form>
                     <div class="input-field">
                         <input id="search" type="search" required>

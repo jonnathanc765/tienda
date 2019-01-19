@@ -33,6 +33,7 @@ Route::prefix('detalles')->group(function ()
     Route::get('/', 'CartController@index')->name('cart.index');
     Route::delete('/{detail}', 'CartDetailController@destroy')->name('detail.destroy');
     Route::post('/guardar', 'CartDetailController@store')->name('detail.store');
+    Route::get('/vaciar', 'CartDetailController@empty')->name('detail.empty');
 });
 
 Auth::routes();
