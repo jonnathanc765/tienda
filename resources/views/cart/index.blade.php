@@ -28,7 +28,7 @@ active
                         <a href="{{ route('detail.empty') }}" class="modal-close waves-effect waves-green btn-flat">Aceptar</a>
                     </div>
                 </div>
-                <table class="highlight centered responsive-table">
+                <table class="highlight centered">
                     <thead>
                       <tr>
                           <th>Cantidad</th>

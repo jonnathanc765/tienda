@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="theme-color" content="#1565C0" />
     <link rel="stylesheet" href="{{ asset('css/materialize.min.css') }}">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
     <link rel="icon shortcut" href="{{ asset('img/logo.jpg') }}">
+    <link rel="stylesheet" href="{{ asset('fontawesome/css/all.css') }}">
     <title>Cochonito</title>
 </head>
 <body>

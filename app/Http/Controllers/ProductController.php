@@ -13,7 +13,7 @@ class ProductController extends Controller
     }
     function index()
     {
-        $products = Product::all();
+        $products = Product::where('id', '>', 0)->paginate(20);
         return view('product.index', compact('products'));
     }
     function show(Product $product)
