@@ -24,7 +24,7 @@ active
             <table class="highlight centered">
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <th class="hide-on-small-only">ID</th>
                         <th>Nombre</th>
                         <th>Stock</th>
                         <th>Precio</th>
@@ -34,7 +34,7 @@ active
                 <tbody>
                     @foreach ($products as $product)
                     <tr>
-                        <td>{{ $product->id }}</td>
+                        <td class="hide-on-small-only">{{ $product->id }}</td>
                         <td>{{ $product->name }}</td>
                         <td>{{ $product->quantity }}</td>
                         <td>{{ $product->price }}</td>

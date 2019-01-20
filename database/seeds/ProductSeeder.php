@@ -30,6 +30,6 @@ class ProductSeeder extends Seeder
             'price' => '12000',
         	'quantity' => '30',
         ]);
-        factory(Product::class)->times(17)->create();
+        factory(Product::class)->times(40)->create();
     }
 }

@@ -33,7 +33,7 @@ active
                       <tr>
                           <th>Cantidad</th>
                           <th>Nombre</th>
-                          <th>Precio</th>
+                          <th class="hide-on-small-only">Precio</th>
                           <th>Total</th>
                           <th>Acción</th>
                       </tr>
@@ -44,7 +44,7 @@ active
                         <tr>
                           <td>{{ $detail->quantity }}</td>
                           <td>{{ $detail->product->name }}</td>
-                          <td>{{ $detail->product->price }} Bs.S</td>
+                          <td class="hide-on-small-only">{{ $detail->product->price }} Bs.S</td>
                           <td>{{ $detail->price }} Bs.S</td>
                           <td>
                             <div id="deleteModal-{{ $detail->id }}" class="modal delete">
@@ -78,15 +78,22 @@ active
                                     </div>
                                     
                                 </td>
-                                <td><span id="total"></span> Bs.S</td>
+                                <td class="hide-on-small-only"><span class="total"></span> Bs.S</td>
                                 <td>
                                     <button type="submit"class="btn waves-effect waves-light tooltipped blue" data-position="top" data-tooltip="Agregar Producto"><i class="fas fa-check"></i></button>
                                 </td>
                             </tr>
                         </form>
+                            <div class="hide-on-small">
+                                <tr>
+                                    <td colspan="2">Total producto:</td>
+                                    <td colspan="2"><span class="total"></td>
+                                </tr>
+                            </div>
                             <tr>
                                 <td></td>
-                                <td colspan="3">Total: {{ $total }} Bs.S</td>
+                                <td class="hide-on-small-only"></td>
+                                <td colspan="2">Total: {{ $total }} Bs.S</td>
                                 <td><a href="#check" class="btn waves-effect waves-light tooltipped green modal-trigger" data-position="top" data-tooltip="Procesar"><i class="fas fa-file-invoice-dollar"></i></a></td>
                                 <div id="check" class="modal">
                                     <form action="{{ route('cart.check') }}" method="POST">
@@ -128,20 +135,20 @@ active
 
         $(document).ready(function() {
             var x = $('select option');
-            $('#total').text($('input[type=number]').val()*$(x[0]).attr('id'));
+            $('.total').text($('input[type=number]').val()*$(x[0]).attr('id'));
             $('input[type=number]').change(function() {
                 var pos = parseInt($('select').val())-1;
                 
                 var price = $(x[pos]).attr('id');
                 
-                $('#total').text($(this).val()*price);
+                $('.total').text($(this).val()*price);
             }); 
             $('select').change(function() {
                 var pos = parseInt($('select').val())-1;
                 console.log('pos: ' + pos);
                 var price = $(x[pos]).attr('id');
                 console.log('price: ' + price);
-                $('#total').text($('input[type=number]').val()*price);
+                $('.total').text($('input[type=number]').val()*price);
             });            
         });
 
