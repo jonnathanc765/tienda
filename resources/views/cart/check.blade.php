@@ -29,6 +29,9 @@
 					</tr>
 				</tbody>
 			</table>
+			<a href="#" class="btn waves-effect waves-light">Ver Venta Completa</a>
+			<a href="{{ url()->previous() }}" class="btn waves-effect waves-light blue">Volver al carrito</a>
+			<a href="#" class="btn waves-effect waves-light red right-align">Generar PDF</a>
 		</div>
 	</div>
 </div>
