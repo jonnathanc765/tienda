@@ -9,15 +9,24 @@ active
 <div class="container">
     <div class="row">
         <div class="col m12 s12">
+                <div class="container">
+                    <nav>
+                        <div class="nav-wrapper blue darken-3">
+                            <form>
+                            <div class="input-field">
+                                <input id="search" type="search" required>
+                                <label class="label-icon" for="search">
+                                    <i class="material-icons">
+                                        <i class="fas fa-search"></i>
+                                    </i></label>
+                                <i class="material-icons"><i class="fas fa-times"></i></i>
+                            </div>
+                            </form>
+                        </div>
+                    </nav
+                </div>
             <h2>Productos Registrados</h2>
-            @if ($errors->any())
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-                
-            @endif
+      
 
             <a class="btn-floating btn-large waves-effect waves-light red" href="{{ route('product.create') }}"><i class="material-icons"><i class="fas fa-plus"></i></i></a> Agregar Nuevo Producto
             

@@ -84,12 +84,10 @@ active
                                 </td>
                             </tr>
                         </form>
-                            <div class="hide-on-small">
-                                <tr>
-                                    <td colspan="2">Total producto:</td>
-                                    <td colspan="2"><span class="total"></td>
-                                </tr>
-                            </div>
+                            <tr>
+                                <td colspan="2" class="hide-on-med-and-up">Total</td>
+                                <td colspan="2" class="hide-on-med-and-up"><span class="total"></span> Bs.S</td>
+                            </tr>
                             <tr>
                                 <td></td>
                                 <td class="hide-on-small-only"></td>

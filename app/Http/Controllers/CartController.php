@@ -14,7 +14,7 @@ class CartController extends Controller
     }
     function index()
     {   
-        $cart = Cart::where('status', '=', 'active')->first();
+        $cart = Cart::where('status','active')->where('user_id', Auth::user()->id)->first();
         if ($cart == null) {
             $cart = new Cart;
             $cart->status = 'active';
