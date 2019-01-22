@@ -114,13 +114,16 @@
         document.addEventListener('DOMContentLoaded', function() {
             var elems = document.querySelectorAll('.datepicker');
             var instances = M.Datepicker.init(elems, {
-                format: 'dd/mm/yyyy',
+                format: 'yyyy-mm-dd',
                 showClearBtn: true,
                 autoClose: true,
             });
         });
 
         $(document).ready(function () {
+
+            
+             
             $('input[name=range]').change(function() {
                 if ($(this).val() == 'range') {
                     $('.datepicker').removeAttr('disabled');

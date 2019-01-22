@@ -59,12 +59,15 @@ class CartController extends Controller
         if (request('range') == 'range') {
             $carts = Cart::where('user_id',Auth::user()->id)
             ->orderBy('id','DESC')
-            ->get();    
+            ->get();
+            
         } else {
             $carts = Cart::where('user_id',Auth::user()->id)
             ->orderBy('id','DESC')
             ->Date(request('range'))
-            ->get();
+            // ->get();
+            ->toSql();
+            dd($carts);
         }
         
         

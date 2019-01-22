@@ -33,7 +33,9 @@ class Cart extends Model
             $to = date ( 'Y-m-d' , $to );
             $now = strtotime ( '+1 day' , strtotime ( $now ) );
             $now = date ( 'Y-m-d' , $now );
+            dd($to);
             $query->whereBetween('updated_at', [$to, $now]);
+         
         }
     }
     function totalCart()
