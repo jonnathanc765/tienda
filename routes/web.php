@@ -28,6 +28,7 @@ Route::prefix('carrito')->group(function ()
     Route::get('/vaciar', 'CartController@empty')->name('cart.empty');
     Route::post('/facturar', 'CartController@check')->name('cart.check');
     Route::get('/facturar/final', 'CartController@check')->name('cart.check-in');
+    Route::get('/lista','CartController@list')->name('cart.list');
 });
 
 Route::prefix('detalles')->group(function ()

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Cart;
 use App\Product;
+use DateTime;
 
 class CartController extends Controller
 {
@@ -48,5 +49,25 @@ class CartController extends Controller
             }
         }
         
+    }
+    function list()
+    {
+        $now = date('Y-m-d');
+        $time_array = request('range');
+        
+        
+        if (request('range') == 'range') {
+            $carts = Cart::where('user_id',Auth::user()->id)
+            ->orderBy('id','DESC')
+            ->get();    
+        } else {
+            $carts = Cart::where('user_id',Auth::user()->id)
+            ->orderBy('id','DESC')
+            ->Date(request('range'))
+            ->get();
+        }
+        
+        
+        return view('cart.list', compact('carts','time_array','now'));
     }
 }

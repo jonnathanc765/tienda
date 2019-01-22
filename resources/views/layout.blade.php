@@ -31,7 +31,7 @@
                 @csrf
             </form>
             <ul id="nav-dropdown" class="dropdown-content">
-                <li><a href="#!">Comming Soon</a></li>
+                <li><a href="{{ route('cart.list') }}">Lista de Facturas</a></li>
                 <li><a href="#!">Comming Soon</a></li>
                 <li class="divider"></li>
                 <li><a class="logout">Cerrar Sesión</a></li>
